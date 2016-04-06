@@ -27,11 +27,14 @@ void loop() {
   Serial.print(scaleCuatro.get_units(5)*1000,0);
   Serial.println();
   Serial.print(" ");
-  delay(2000);
-  if(Serial.available()>0){
-    String info = Serial.readString();
+  while(Serial.available()>0){
+    String info = Serial.readStringUntil('\n');
+    info.trim();
     if(info == "reiniciar"){
-      scaleUno.tare();        
+      //reinicia la pesa del plato
+      scaleUno.tare(); 
+      //delay(20000);     
     }
   }
+  delay(2000);
 }
