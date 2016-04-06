@@ -33,7 +33,7 @@ void loop() {
     if(info == "reiniciar"){
       //reinicia la pesa del plato
       scaleUno.tare(); 
-      //delay(20000);     
+      delay(3000);     
     }
   }
   delay(2000);
