@@ -4,6 +4,7 @@ HX711 scaleUno(A1, A0);
 HX711 scaleDos(A3, A2);
 HX711 scaleTres(A5, A4);
 HX711 scaleCuatro(A7, A6);
+//(DT, SCK)
 void setup() {
   Serial.begin(9600);
   scaleUno.set_scale(factorUno);
@@ -27,4 +28,10 @@ void loop() {
   Serial.println();
   Serial.print(" ");
   delay(2000);
+  if(Serial.available()>0){
+    String info = Serial.readString();
+    if(info == "reiniciar"){
+      scaleUno.tare();        
+    }
+  }
 }
