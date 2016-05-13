@@ -1,5 +1,5 @@
 #include <HX711.h>
-#define factorUno -766000
+#define factorUno -775000
 HX711 scaleUno(A1, A0);
 HX711 scaleDos(A3, A2);
 HX711 scaleTres(A5, A4);
@@ -10,20 +10,20 @@ HX711 scaleSiete(A13, A12);
 //(DT, SCK)
 void setup() {
   Serial.begin(9600);
-  scaleUno.set_scale(factorUno);
+  scaleUno.set_scale(-816000);
   scaleUno.tare();
-  scaleDos.set_scale(factorUno);
+  scaleDos.set_scale(-839500);
   scaleDos.tare();
-  scaleTres.set_scale(factorUno);
+  scaleTres.set_scale(-788000);
   scaleTres.tare();
-  scaleCuatro.set_scale(factorUno);
+  scaleCuatro.set_scale(-778000);
   scaleCuatro.tare();
-  scaleCinco.set_scale(factorUno);
+  scaleCinco.set_scale(-729000);
   scaleCinco.tare();
   scaleSeis.set_scale(factorUno);
   scaleSeis.tare();
-  scaleSiete.set_scale(factorUno);
-  scaleSiete.tare();
+  //scaleSiete.set_scale(factorUno);
+  //scaleSiete.tare();
 }
 
 void loop() {
@@ -31,19 +31,18 @@ void loop() {
   Serial.print(" ");
   Serial.print(scaleUno.get_units(5)*1000,0);
   Serial.print(" ");
-  Serial.print(22);
+  Serial.print(scaleDos.get_units(5)*1000,0);
   Serial.print(" ");
-  Serial.print(33);
+  Serial.print(scaleTres.get_units(5)*1000,0);
   Serial.print(" ");
-  Serial.print(44);
+  Serial.print(scaleCuatro.get_units(5)*1000,0);
   Serial.print(" ");
-  Serial.print(55);
+  Serial.print(scaleCinco.get_units(5)*1000,0);
   Serial.print(" ");
-  Serial.print(66);
+  Serial.print(scaleSeis.get_units(5)*1000,0);
   Serial.print(" ");
   Serial.print(77);
   Serial.println();
-  Serial.print(" ");
   while(Serial.available()>0){
     String info = Serial.readStringUntil('\n');
     info.trim();
@@ -52,8 +51,11 @@ void loop() {
       Serial.println();
       delay(20000); 
       //reinicia la pesa del plato
-      scaleUno.tare();      
+      scaleUno.tare(); 
+      Serial.print("nuevoPeso");
+      Serial.println();     
     }
   }
   delay(1000);
 }
+
