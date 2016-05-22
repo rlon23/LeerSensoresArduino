@@ -8,8 +8,8 @@ HX711 scaleCinco(A9, A8);
 HX711 scaleSeis(A11, A10);
 HX711 scaleSiete(A13, A12);
 //(DT, SCK)
-void setup() {
-  Serial.begin(9600);
+void setup() {  
+  Serial.begin(19200);
   scaleUno.set_scale(-816000);
   scaleUno.tare();
   scaleDos.set_scale(-839500);
@@ -29,20 +29,19 @@ void setup() {
 void loop() {
   Serial.print("pesas");
   Serial.print(" ");
-  Serial.print(abs(scaleUno.get_units(5))*1000,0);
+  Serial.print(scaleUno.get_units(5)*1000,0);
   Serial.print(" ");
-  Serial.print(abs(scaleDos.get_units(5))*1000,0);
+  Serial.print(scaleDos.get_units(5)*1000,0);
   Serial.print(" ");
-  Serial.print(abs(scaleTres.get_units(5))*1000,0);
+  Serial.print(scaleTres.get_units(5)*1000,0);
   Serial.print(" ");
-  Serial.print(abs(scaleCuatro.get_units(5))*1000,0);
+  Serial.print(scaleCuatro.get_units(5)*1000,0);
   Serial.print(" ");
-  Serial.print(abs(scaleCinco.get_units(5))*1000,0);
+  Serial.print(scaleCinco.get_units(5)*1000,0);
   Serial.print(" ");
-  Serial.print(abs(scaleSeis.get_units(5))*1000,0);
-  Serial.print(" ");
-  Serial.print(77);
+  Serial.print(scaleSeis.get_units(5)*1000,0);
   Serial.println();
+  Serial.flush();
   while(Serial.available()>0){
     String info = Serial.readStringUntil('\n');
     info.trim();
@@ -56,6 +55,6 @@ void loop() {
       Serial.println();     
     }
   }
-  delay(1000);
+  delay(100);
 }
 
