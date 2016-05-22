@@ -29,17 +29,17 @@ void setup() {
 void loop() {
   Serial.print("pesas");
   Serial.print(" ");
-  Serial.print(scaleUno.get_units(5)*1000,0);
+  Serial.print(abs(scaleUno.get_units(5))*1000,0);
   Serial.print(" ");
-  Serial.print(scaleDos.get_units(5)*1000,0);
+  Serial.print(abs(scaleDos.get_units(5))*1000,0);
   Serial.print(" ");
-  Serial.print(scaleTres.get_units(5)*1000,0);
+  Serial.print(abs(scaleTres.get_units(5))*1000,0);
   Serial.print(" ");
-  Serial.print(scaleCuatro.get_units(5)*1000,0);
+  Serial.print(abs(scaleCuatro.get_units(5))*1000,0);
   Serial.print(" ");
-  Serial.print(scaleCinco.get_units(5)*1000,0);
+  Serial.print(abs(scaleCinco.get_units(5))*1000,0);
   Serial.print(" ");
-  Serial.print(scaleSeis.get_units(5)*1000,0);
+  Serial.print(abs(scaleSeis.get_units(5))*1000,0);
   Serial.print(" ");
   Serial.print(77);
   Serial.println();
